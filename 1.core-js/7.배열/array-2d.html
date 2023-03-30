@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array-2d</title>
+</head>
+<body>
+    
+    <script>
+
+        //우리반 학생들 4과목 점수 (국영수탐)
+        // var kim = [67, 89, 92, 32];
+        // var lee = [100, 85, 46, 99];
+        // var park = [100, 89, 94, 99];
+
+        var ourStudentScore = [
+        [67, 89, 92, 32],
+        [100, 85, 46, 99],
+        [100, 89, 94, 99]
+        ];
+
+        console.log(ourStudentScore);  //Array(3)
+        console.log(ourStudentScore[1]); //array
+        console.log(ourStudentScore[0][2]); //92
+
+        //반평균 구하기
+        var total = 0;
+        var average;
+        for(var a of ourStudentScore){
+            for(var n of a)
+            total += n;
+        }
+
+        average = total / (ourStudentScore.length * ourStudentScore[0].length)
+        console.log(average + '점');
+
+        /////////////////////////////////////
+
+        
+        var ourAverage = 0;
+        for(var studentScore of ourStudentScore){
+            
+            var eachTotal = 0;  //한 학생의 4과목 점수
+            for(var score of studentScore){
+                eachTotal += score;
+            }
+
+            //한 학생의 평균점수
+            var eachAvg = eachTotal / studentScore.length;
+            ourAverage += eachAvg;
+        }
+
+        var classAvg = ourAverage / ourStudentScore.length;
+        console.log(Math.round(classAvg*100)/100 + '점');
+    </script>
+</body>
+</html>

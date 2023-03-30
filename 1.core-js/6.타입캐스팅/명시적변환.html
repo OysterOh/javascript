@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>명시적변환</title>
+</head>
+<body>
+    
+    <script>
+        //문자열이 아닌 값을 문자열로 변환하는 방법
+        var a = 10, b = 20;
+        var result = a + String(b);  //1020
+        result = a.toString() + b.toString();  //1020
+
+        console.log(result);
+
+        //숫자가 아닌 값을 숫자타입으로 변환하는 방법
+        var m ='10', n = '3.14';
+        result = Number(m) + Number(n);  //13.14
+        result = parseInt(m) + parseFloat(n);  //13.14
+        console.log(result);  
+
+        //논리 타입이 아닌 값을 논리타입으로 변환하는 방법
+        var t = 'Hello', f = '';
+        console.log(Boolean(t));  //true
+        console.log(Boolean(f));  //false
+
+        console.log(!!'hello');  //!'hello' false / !!'hello' true
+        
+    </script>
+</body>
+</html>
