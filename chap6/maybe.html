@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 최대 범위를 저장할 변수
+        const MAX = 100;
+
+        // 게임에 필요한 데이터를 모아놓을 객체
+        const gameData = {
+            secret_num: Math.floor(Math.random() * MAX) + 1,
+            count: 0,
+            countdown: 6,
+            min: 1,
+            max: MAX
+        };
+
+        ////////////////////////함수 정의부///////////////////////////////
+
+        // 사용자의 입력을 수행하는 함수
+        function inputNumber() {
+            const {
+                min,
+                max
+            } = gameData;
+            const message = `숫자를 입력해주세요! (${min} ~ ${max})`;
+            const guess = parseInt(prompt(message), 10);
+            if (isNaN(guess) || guess < min || guess > max) {
+                alert(`잘못된 입력입니다. ${message}`);
+                return false;
+            }
+            gameData.guess = guess;
+            return checkNumber();
+        }
+
+        // 사용자의 입력값을 검증하는 함수
+        function checkNumber() {
+            const {
+                secret_num,
+                guess,
+                countdown
+            } = gameData;
+            if (secret_num === guess) {
+                alert(`축하합니다! 정답은 ${secret_num}입니다. ${gameData.count}번 시도하셨습니다.`);
+                return true;
+            }
+            gameData.count += 1;
+            gameData.countdown -= 1;
+            const result = guess > secret_num ? 'DOWN' : 'UP';
+            alert(`틀렸습니다. ${result}! 남은 기회: ${gameData.countdown}`);
+            return checkCountDown(countdown);
+        }
+
+        // 사용자의 카운트다운을 체크하여 승리 여부를 알려주는 함수
+        function checkCountDown(countdown) {
+            if (countdown === 0) {
+                alert(`아쉽습니다. 정답은 ${gameData.secret_num}입니다. 6번의 기회 모두 소진하셨습니다.`);
+                return true;
+            }
+            if (countdown === 2) {
+                alertCountDown(countdown);
+            }
+            return false;
+        }
+
+        // 사용자의 남은 카운트다운 횟수를 알려주는 함수
+        function alertCountDown(countdown) {
+            alert(`주의하세요! 기회가 ${countdown}번 남았습니다.`);
+        }
+
+        // 핵심 실행부 (main의 역할을 하는 함수)
+        // 즉시 실행 함수로 선언하여 따로 호출하지 않아도
+        // 바로 실행될 수 있도록 작성.
+        (function () {
+            alert('[UP & DOWN 게임 - 1 ~ 100 사이의 숫자를 맞춰보세요!]');
+            while (!inputNumber()) {
+                // true가 리턴되면 프로그램 종료.
+                // false가 리턴되면 게임 계속 진행.
+                return true;
+            }
+        }());
+    </script>
+</body>
+
+</html>
