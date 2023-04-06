@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz06</title>
+    <style>
+        .img {
+            width: 500px;
+            border: 10px solid black;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h2>css스타일로 변경하기</h2>
+    <img src="./img/1.jpg" alt="test" class="img">
+    <select id="select">
+        <option value="./img/1.jpg">봄</option>
+        <option value="./img/2.jpg">여름</option>
+        <option value="./img/3.jpg">가을</option>
+        <option value="./img/4.jpg">겨울</option>
+    </select>
+
+    <span>변경할 색상</span>
+    <input type="color" class="input">
+
+    <script>
+        const $select = document.getElementById('select');
+        const $img = document.querySelector('.img');
+        const $color = document.querySelector('.input')
+        // const $color = document.querySelector('input[type="color"]')
+
+        $select.addEventListener('change', e => {
+        //    $img.setAttribute('src', e.target.value);
+           $img.setAttribute('src', $select.value);
+        })
+
+        $color.addEventListener('change', e => {
+            $img.style.borderColor = $color.value;
+        })
+    </script>
+</body>
+</html>

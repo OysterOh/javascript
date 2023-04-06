@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz02</title>
+</head>
+
+<body>
+    <!--
+        이벤트와 innerHTML or textContent를 활용하여
+        카운트를 누적해서 올리거나 내려주세요.
+        0아래로는 내려가지 않게 하세요.
+    -->
+
+    <h2>자바스크립트 카운트</h2>
+    <input type="text" id="result" value="0" readonly>
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+
+    <script>
+        const $result = document.getElementById('result');
+        const $plus = document.getElementById('plus');
+        document.getElementById('plus').onclick = function (e) {
+            // $result.onclick = function(e){
+            console.log($plus.value);
+            $plus.value++;
+            $result.value++;
+        }
+
+        const $minus = document.getElementById('minus');
+        document.getElementById('minus').onclick = function (e) {
+            if ($result.value == 0) {
+                //number로 바꾸기 (+$result)
+                //=하나 지우기
+                //0을 문자열로 바꾸기 ('0')
+                alert('0미만으로 내릴 수 없습니다');
+                return;
+            }
+
+            console.log($minus.value);
+            $minus.value++;
+            $result.value--;
+
+        }
+    </script>
+</body>
+
+</html>

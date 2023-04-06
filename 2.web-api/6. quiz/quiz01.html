@@ -22,6 +22,28 @@
     <input type="checkbox" value="3"> 조항3
     <input type="checkbox" value="4"> 조항4
 
+    <script>
+        const $checkbox = document.getElementsByTagName('input');
+        // console.log($checkbox);
+        // $checkbox.addEventListner('click', e => {
+        //     alert('동의했습니다!' + e.value);
+        // });
+        for (let i=0; i<4; i++) {
+          $checkbox[i].addEventListener('change', e => {
+            if(e.target.checked){
+            alert('동의했습니다! ' + e.target.value)}
+          })
+        }
+
+        // for(let $c of [...$checkbox]){
+        //     $c.addEventListener('change', e => {
+        //         if(e.target.checked){
+        //             alert('동의하셨습니다. ' + e.target.value);
+        //         }
+        //     })
+        // }
+    </script>
+
     <br>
 
     <!--
@@ -33,18 +55,22 @@
     <button id="check2">확인</button>
 
     <script>
-        const $checkbox = document.getElementsByTagName('input');
-        // console.log($checkbox);
-        // $checkbox.addEventListner('click', e => {
-        //     alert('동의했습니다!' + e.value);
-        // });
-        for (let i=0; i<4; i++) {
-          $checkbox[i].addEventListener('change', e => {
-            if(e.target.checked){
-            alert('동의했습니다!' + e.target.value)}
-          })
+        const $result = document.getElementById('id');
+        const $remember = document.getElementById('remember');
+
+        document.getElementById('check2').onclick = function(e) {
+            console.log('value: ' + $result.value);
+            console.log('check: ' + $remember.checked);
+
+            if($result.value === '') {
+                alert('아이디는 필수값입니다');
+            } else if(!$remember.checked){
+                alert('기억하기를 체크하지 않았습니다');
+            }
         }
+
     </script>
+    
 </body>
 
 </html>

@@ -32,7 +32,8 @@
         <li id="grape">Grape</li>
     </ul>
 
-    <div>선택된 과일: <em class="msg">apple</em></div>
+    <div>선택된 과일: <em class="msg">apple</em></div>  
+    <!-- 기본값 -->
 
     <br>
 
@@ -67,9 +68,10 @@
                 //     if ($li.classList.contains('active')) {
                 //         $li.classList.remove('active');
                 //     }
-
-                // e.target.classList.add('active');
-                //메세지 영역에 이벤트가 발생된 과일 이름을 추가
+                //}
+                
+            // e.target.classList.add('active');
+            //메세지 영역에 이벤트가 발생된 과일 이름을 추가
                 console.log(e);
                 $msg.textContent = e.target.id;
             }
