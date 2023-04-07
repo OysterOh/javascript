@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window 시계</title>
+
+    <style>
+        .bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            animation: fadeIn .5s linear;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .clock h1 {
+            color: white;
+            font-size: 5em;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="clock">
+        <h1>00:00:00</h1>
+        <!-- <img src="./img/1.jpg" alt="1" class="bg-img">
+        <img src="./img/2.jpg" alt="2" class="bg-img">
+        <img src="./img/3.jpg" alt="3" class="bg-img">
+        <img src="./img/4.jpg" alt="4" class="bg-img"> -->
+    </div>
+
+
+    <script>
+        const $clock = document.querySelector('.clock h1')
+        // let func = document.querySelector('bg-img');
+        let $img = document.querySelector('bg-img');
+
+        function createTime() {
+            //Date객체를 이용하여 날짜 정보를 얻은 후
+            //화면에 보일 시계 형식에 맞게 값을 얻어서 텍스트 형식으로 표현
+            const date = new Date();
+            const hour = date.getHours();
+            const min = date.getMinutes();
+            const sec = date.getSeconds();
+            $clock.textContent = `${hour}:${min}:${sec}`;
+            const time = (hour < 10 ? '0' + hour : hour) + ':' +
+                (min < 10 ? '0' + min : min) + ':' +
+                (sec < 10 ? '0' + sec : sec);
+
+            $clock.textContent = time;
+            console.log(date);
+
+        }
+
+        let count = 0;
+
+        function changeBackGround() {
+            //img요소를 생성해서 봄,여름,가을,겨울 순서대로 이미지 넣어준다
+            //changeBackGround 함수는 나중에 인터벌 함수에 10초마다 한번씩 반복되도록 설정되므로
+            //순서대로 표현되게 처리한다
+            //파일명 잘 보면 반복하기 쉽다..?
+            const bgList = [1, 2, 3, 4];
+            const $img = document.createElement('img');
+            $img.classList.add('bg-img');
+            $img.setAttribute('src', `./img/${bgList[count]}.jpg`);
+            document.body.appendChild($img);
+            count++;
+            console.log($img);
+            if (count === bgList.length) count = 0;
+        }
+
+        (function () {
+            createTime();
+            setInterval(createTime, 1000);
+            changeBackGround();
+            setInterval(changeBackGround, 10000);
+        })();
+                                                                           
+    </script>
+</body>
+
+</html>

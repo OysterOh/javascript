@@ -30,9 +30,9 @@
         const $fruits = document.getElementById('fruits');
 
         $fruits.addEventListener('click', e => {
-            // console.log('ul에 클릭 이벤트 발생');
-            // console.log('이벤트 핸들러가 붙은 타겟: ' + e.currentTarget);
-            // console.log('실제 이벤트가 발생한 요소: ' + e.target);
+            console.log('ul에 클릭 이벤트 발생');
+            console.log('이벤트 핸들러가 붙은 타겟: ' + e.currentTarget);
+            console.log('실제 이벤트가 발생한 요소: ' + e.target);
             if(e.currentTarget === e.target) {
                 return;
             } 
