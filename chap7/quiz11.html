@@ -59,12 +59,17 @@
 	삭제를 누를 때마다 해당 tr이 지워질 수 있도록 처리해 보세요.
    */
         const $btn = document.querySelector('tbody');
+        console.log($btn);
         // $btn.onclick = function(){
         //     if(target.name === 'button') {
 
         //         tr.removeChild($btn.target.parentNode);
         //     }
         // }
+
+        //매개변수를 선언하지 않으면 이벤트 객체를 못쓸까? 아니다
+        //event라는 이름으로 바로 사용이 가능하지만 이름을 붙여서 쓰는게 편하다
+        // console.log(e.target);
         $btn.addEventListener('click', e => {
             if(e.target.tagName == 'BUTTON'){
                 const $tr = e.target.parentNode.parentNode;
@@ -72,8 +77,17 @@
                     $tr.removeChild($tr.lastElementChild)
                 }
             }
-        })
-    </script>
+        });
+
+
+        if(!e.target.matches('button')) {
+            return;
+        }
+        
+        //삭제 버튼이 눌리면 그 삭제 버튼이 포함된 tr을 날리자
+        //$btn의 부모 td 의 부모 tr
+        $btn.removeChild(e.target.parentNode.parentNode);
+        </script>
 
 </body>
 </html>

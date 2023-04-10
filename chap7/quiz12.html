@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,9 +16,11 @@
             border: 1px solid #333;
             cursor: pointer;
         }
+
         .toggle-menu {
             display: none;
         }
+
         .active {
             display: block;
             animation: fadeIn 0.5s ease-in-out;
@@ -26,13 +29,16 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-            } to {
+            }
+
+            to {
                 opacity: 1;
             }
         }
     </style>
 
 </head>
+
 <body>
 
     <ul class="toggle">
@@ -64,79 +70,66 @@
         3. data-id 값에 알맞는 태그에 active속성 추가.
         */
 
+        const $toggle = document.querySelector('.toggle');
+        $toggle.onclick = function(e) {
+            if(!e.target.matches('.toggle > li')) {
+                return;
+            }
 
-        const $ul = document.querySelector('.toggle');
-        const $menu = document.getElementById('menu');
-        $ul.onclick = event => {
-            const $id = event.target.getAttribute('data-id');
-            const $active = $menu.querySelector($id);
-            $active.classList.toggle('active');
+            const $toggleList = document.querySelectorAll('.toggle-menu');
             
-        }
+            for(let $ele of [...$toggleList]){
+                $ele.classList.toggle('active', document.querySelector(e.target.dataset.id) === $ele.id);
+
+            }
+            
+            // [...$toggleList].forEach()
+        };
 
 
+        
+        // const $ul = document.querySelector('.toggle');
+        // const $menu = document.getElementById('menu');
+        // $ul.onclick = event => {
+        //     const $id = event.target.getAttribute('data-id');
+        //     const $active = $menu.querySelector($id);
+        //     $active.classList.toggle('active');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // }
 
 
 
 
 
         //    const $tog1 = document.getElementById('#toggle1');
-    //    const $data1 = document.getElementById('toggle1');
-    //    const $tog2 = document.getElementById('#toggle2');
-    //    const $data2 = document.getElementById('toggle2');
-    //    const $tog3 = document.getElementById('#toggle3');
-    //    const $data3 = document.getElementById('toggle3');
+        //    const $data1 = document.getElementById('toggle1');
+        //    const $tog2 = document.getElementById('#toggle2');
+        //    const $data2 = document.getElementById('toggle2');
+        //    const $tog3 = document.getElementById('#toggle3');
+        //    const $data3 = document.getElementById('toggle3');
 
-    //    $tog1.onclick = function(){
-    //     $tog1.classList.toggle('menu1');
-    //     if($tog1.classList.contains('menu1')) {
-    //         $data1.innerHTML = $tog1.textContent;
-    //     }
-    //    }
+        //    $tog1.onclick = function(){
+        //     $tog1.classList.toggle('menu1');
+        //     if($tog1.classList.contains('menu1')) {
+        //         $data1.innerHTML = $tog1.textContent;
+        //     }
+        //    }
 
-    //    $tog2.onclick = function(){
-    //     $tog2.classList.toggle('menu2');
-    //     if($tog2.classList.contains('menu2')) {
-    //         $data1.innerHTML = $tog2.textContent;
-    //     }
-    //    }
+        //    $tog2.onclick = function(){
+        //     $tog2.classList.toggle('menu2');
+        //     if($tog2.classList.contains('menu2')) {
+        //         $data1.innerHTML = $tog2.textContent;
+        //     }
+        //    }
 
-    //    $tog3.onclick = function(){
-    //     $tog3btn1.classList.toggle('menu3');
-    //     if($tog3.classList.contains('menu3')) {
-    //         $data3.innerHTML = $tog3.textContent;
-    //     }
-    //    }
-
-    
-
+        //    $tog3.onclick = function(){
+        //     $tog3btn1.classList.toggle('menu3');
+        //     if($tog3.classList.contains('menu3')) {
+        //         $data3.innerHTML = $tog3.textContent;
+        //     }
+        //    }
     </script>
-    
+
 </body>
+
 </html>
