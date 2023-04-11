@@ -1,0 +1,12 @@
+body {
+    background: gray;
+}
+
+#main {
+    background: brown;
+    width: 50%;
+}
+
+#main .high-score {
+    justify-content: space-between;
+}
